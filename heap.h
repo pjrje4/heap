@@ -7,10 +7,12 @@ Heap
 
 class Heap {
 private:
-	Heap(); // Constructor
-	~Heap(); // Destructor
-	int data[101];
+	int *data;
+	int maxSize;
+	int currentSize;
 public:
+	Heap(int size); // Constructor
+	~Heap(); // Destructor
 	// Input
 	void addNum(int num);
 	// Delete

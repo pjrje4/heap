@@ -16,8 +16,10 @@ public:
 	// Input
 	void addNum(int num);
 	// Delete
-	void delNum(int num);
+	void out();
 	// Print Entire Table
 	void print();
+	// Sort from an index
+	void sort(int index);
 };
 

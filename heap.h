@@ -13,13 +13,15 @@ private:
 public:
 	Heap(int size); // Constructor
 	~Heap(); // Destructor
-	// Input
-	void addNum(int num);
-	// Delete
-	void out();
-	// Print Entire Table
-	void print();
-	// Sort from an index
-	void sort(int index);
+	void debug();
+	int left(int index); // left
+	int right(int index); // right
+	int parent(int index); // parent
+	void swap(int x, int y); // swap 2 indecies
+	void addNum(int num); // add number
+	void out(); // output table least to greatest
+	void print();// print entire tree visually
+	void sink(int index); //sort down
+	void swim(int index); // sort up
 };
 

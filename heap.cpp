@@ -13,8 +13,8 @@ using namespace std;
 
 Heap::Heap(int size) { // parametized constructor
 	currentSize = 0;
-	maxSize = size;
-	data = new int[size];
+	maxSize = size + 1;
+	data = new int[size + 1];
 }
 Heap::~Heap() { // destructor
 }

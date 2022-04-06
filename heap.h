@@ -20,7 +20,7 @@ public:
 	void swap(int x, int y); // swap 2 indecies
 	void addNum(int num); // add number
 	void out(); // output table least to greatest
-	void print();// print entire tree visually
+	void print(int index);// print entire tree visually
 	void sink(int index); //sort down
 	void swim(int index); // sort up
 };

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <math.h>
 #include "heap.h"
 
 #if 0
@@ -36,9 +37,7 @@ int Heap::right(int index) {
 	return index*2+1;
 }
 int Heap::parent(int index) {
-	cout << (index-1)/2 << endl; 
-	cout << (2-1)/2 << endl;
-	return (index-1)/2;
+	return index/2;
 }
 void Heap::swap(int x, int y) {
 	int temp = data[x];
@@ -59,30 +58,46 @@ void Heap::addNum(int num) {
 void Heap::out() {
 	while (currentSize > 0) {
 		cout << data[1] << ", ";
-		data[1] = data[currentSize + 1];
-		data[currentSize + 1] = 0;
-		sink(1);
+		data[1] = data[currentSize];
+		data[currentSize] = 0;
 		currentSize--;
+		sink(1);
 	}
 	return;
 }
-void Heap::print() {
+void Heap::print(int index) {
+	if (left(index) <= currentSize) {
+		print(left(index));
+	}
+
+	int tabs = log10(index) / log10(2);
+	for (int i = 0; i < tabs; i++) {
+		cout << "    ";
+	}
+	cout << data[index] << endl;
+
+	if (right(index) <= currentSize) {
+		print(right(index));
+	}
+
 	return;
 }
 void Heap::sink(int index) {
-	if (data[left(index)] == 0) {
+	if (data[left(index)] == 0 || left(index) > currentSize) {
 		return;
 	}
 	if (data[index] < data[left(index)]) {
 		swap(index, left(index));
+		sink(index);
 		sink(left(index));
 		return;
 	}
-	if (data[right(index)] == 0) {
+	if (data[right(index)] == 0 || right(index) > currentSize) {
 		return;
 	}
 	if (data[index] < data[right(index)]) {
 		swap(index, right(index));
+		sink(index);
 		sink(right(index));
 		return;
 	}
